@@ -10,6 +10,7 @@ from common import configure_tracer, configure_meter
 from opentelemetry.propagate import inject
 from opentelemetry.trace import Status, StatusCode
 import time
+from common import start_recording_memory_metrics
 
 tracer = configure_tracer("shopper", "0.1.2")
 meter = configure_meter("shopper", "0.1.2")
@@ -103,4 +104,5 @@ def visit_store():
 
 
 if __name__ == "__main__":
+    start_recording_memory_metrics(meter)
     visit_store()
